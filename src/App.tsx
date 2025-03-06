@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 // React is designed around this concept. React assumes that every component you write is a pure function. This means that React components you write must always return the same JSX given the same inputs: props and state. This is a fundamental concept in React, and it's what makes React fast and efficient.
 
 // When you pass drinkers={2} to Recipe, it will return JSX containing 2 cups of water. Always. If you pass drinkers={4}, it will return JSX containing 4 cups of water. Always. Just like a math formula. You could think of your components as recipes: if you follow them and don’t introduce new ingredients during the cooking process, you will get the same dish every time. That “dish” is the JSX that the component serves to React to render.
@@ -38,14 +40,20 @@ function Cup({ guest }: { guest: number }) {
 //   );
 // }
 
+// Local mutation: Your component’s little secret:
+// In the above example, the problem was that the component changed a preexisting variable while rendering. This is often called a “mutation” to make it sound a bit scarier. Pure functions don’t mutate variables outside of the function’s scope or objects that were created before the call—that makes them impure!
+
+// However, it’s completely fine to change variables and objects that you’ve just created while rendering. In this example, you create an [] array, assign it to a cups variable, and then push a dozen cups into it:
+
+// If the cups variable or the [] array were created outside the App function, this would be a huge problem! You would be changing a preexisting object by pushing items into that array. However, it’s fine because you’ve created them during the same render, inside App. No code outside of App will ever know that this happened. This is called “local mutation”—it’s like your component’s little secret.
+
 function App() {
-  return (
-    <>
-      <Cup guest={1} />
-      <Cup guest={2} />
-      <Cup guest={3} />
-    </>
-  );
+  let cups: JSX.Element[] = [];
+
+  for (let index = 1; index <= 12; index++) {
+    cups.push(<Cup guest={index} key={index} />);
+  } // This is fine, as cups was just created
+  return cups;
 }
 
 export default App;
