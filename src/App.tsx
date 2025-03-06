@@ -19,12 +19,11 @@ function Recipe({ drinkers }: { drinkers: number }) {
 
 // This component is reading and writing a guest variable declared outside of it. This means that calling this component multiple times will produce different JSX! And what’s more, if other components read guest, they will produce different JSX, too, depending on when they were rendered! That’s not predictable.Going back to our formula y = 2x, now even if x = 2, we cannot trust that y = 4. Our tests could fail, our users would be baffled, planes would fall out of the sky—you can see how this would lead to confusing bugs! You can fix this component by passing guest as a prop instead:
 
-let guest = 0;
-function Cup() {
-  // Bad practice: side effect in a component!
-  // changing a preexisting variable!
-  guest = guest + 1; // side effect
-  return <h2>Tea cup for guest #{guest}</h2>;
+// Now the Cup component is pure, as the JSX it returns only depends on the guest prop.In general, you should not expect your components to be rendered in any particular order. It doesn’t matter if you call y = 2x before or after y = 5x: both formulas will resolve independently of each other. In the same way, each component should only “think for itself”, and not attempt to coordinate with or depend upon others during rendering. Rendering is like a school exam: each component should calculate JSX on their own! This is the key to React’s efficiency and predictability.
+
+function Cup({ guest }: { guest: number }) {
+  // Good Practice: Always pass props to components, never read them from outside!
+  return <h2>Tea cup for guest #{guest}</h2>; // This component is now pure
 }
 
 // function App() {
@@ -42,9 +41,9 @@ function Cup() {
 function App() {
   return (
     <>
-      <Cup />
-      <Cup />
-      <Cup />
+      <Cup guest={1} />
+      <Cup guest={2} />
+      <Cup guest={3} />
     </>
   );
 }
