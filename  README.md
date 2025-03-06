@@ -20,19 +20,21 @@ This repository documents my journey of learning React, focusing on understandin
 
 ## How to Run Projects
 
-Each project can be run using:
-
-# Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/saadazghour/react-docs-and-practice.git
+```
 
-# Install dependencies
+### Install dependencies
 
+```bash
 npm install
+```
 
-# Start development server
+### Start development server
 
+```bash
 npm start
 ```
 
