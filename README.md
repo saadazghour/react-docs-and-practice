@@ -1,54 +1,56 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository documents my journey of learning React, focusing on understanding core concepts, best practices, and hands-on coding.
 
-Currently, two official plugins are available:
+## Learning Sections
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Describing the UI
 
-## Expanding the ESLint configuration
+- [Component Purity Notes](docs/notes/component-purity.md)
+- Exploring pure functional components
+- Understanding rendering principles
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Projects
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Learning Resources
+
+- Official React Documentation
+- React Tutorial
+- Personal notes and experiments
+
+## How to Run Projects
+
+### Clone the repository
+
+```bash
+git clone https://github.com/saadazghour/react-docs-and-practice.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### Start development server
+
+```bash
+npm start
+```
+
+## Learning Resources
+
+- [Official React Documentation](https://react.dev)
+- Personal notes and experiments
+
+## Progress Tracking
+
+- [x] Understanding Component Purity
+- [ ] Pure function concepts
+- [ ] Component rendering
+- [ ] Avoiding side effects
+- [ ] React best practices
+- [ ] State Management
+- [ ] Hooks Deep Dive
+- [ ] Advanced React Patterns
+- [ ] React Performance Optimization
